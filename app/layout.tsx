@@ -1,16 +1,16 @@
+import Footer from "@/components/Footer";
+import Navbar from "@/components/Navbar";
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
+import { Work_Sans } from "next/font/google";
 
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
-});
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
+const work = Work_Sans({
+  subsets: ["latin"],
+  display: "swap",
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+  style: ["normal", "italic"],
+  variable: "--font-work",
 });
 
 export const metadata: Metadata = {
@@ -26,9 +26,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${work.className} mt-4 min-h-screen bg-[#FFFFFF] dark:bg-[#181A2A] transition-colors antialiased`}
       >
-        {children}
+        <div className="sm:mx-28 mx-2">
+          <Navbar />
+          {children}
+        </div>
+        <Footer />
       </body>
     </html>
   );
